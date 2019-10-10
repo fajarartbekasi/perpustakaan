@@ -38,9 +38,11 @@
                                 Buku
                             </li>
                         </a>
-                        <li class="navbar-nav mr-auto text-muted ml-3">
-                            User
-                        </li>
+                        <a href="{{route('users.index')}}">
+                            <li class="navbar-nav mr-auto text-muted ml-3">
+                                User
+                            </li>
+                        </a>
                         <li class="navbar-nav mr-auto text-muted ml-3">
                             Peminjaman
                         </li>

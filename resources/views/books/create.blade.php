@@ -43,10 +43,10 @@
 			</div>
 
 			<div class="mt-3 mb-3">
-				<button type="submit" class="btn btn-info"> 
+				<button type="submit" class="btn btn-info">
 					Tambah Buku
 				</button>
-				<a href="" class="btn btn-light">
+				<a href="{{route('books.index')}}" class="btn btn-light">
 					Cancel
 				</a>
 			</div>
