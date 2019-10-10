@@ -43,9 +43,11 @@
                                 User
                             </li>
                         </a>
-                        <li class="navbar-nav mr-auto text-muted ml-3">
-                            Peminjaman
-                        </li>
+                        <a href="{{route('borrowings.index')}}">
+                            <li class="navbar-nav mr-auto text-muted ml-3">
+                                Peminjaman
+                            </li>
+                        </a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

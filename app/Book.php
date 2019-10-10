@@ -10,4 +10,9 @@ class Book extends Model
 
     protected $guarded = [];
 
+    public function borrowings()
+    {
+        return $this->hasMany(Borrowing::class);
+    }
+
 }

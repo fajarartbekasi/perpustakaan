@@ -20,6 +20,8 @@ Route::resource('books', 'BookController');
 
 Route::resource('users', 'UserController');
 
+Route::resource('borrowings', 'PeminjamanController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
