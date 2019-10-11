@@ -19,7 +19,8 @@ class CreateBorrowingsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->date('tgl_pinjam');
             $table->date('tgl_kembali');
-            
+            $table->integer('jumlah_pinjam');
+
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

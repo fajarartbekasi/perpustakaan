@@ -30,6 +30,7 @@ class UserRequest extends FormRequest
             'email'         => 'required',
             'no_handphone'  => 'required',
             'alamat'        => 'required',
+            'password'      => 'required',
         ];
     }
     public function formAnggota()

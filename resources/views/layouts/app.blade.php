@@ -31,24 +31,32 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-3">
-                        <a href="{{route('books.index')}}">
-                            <li class="navbar-nav mr-auto text-muted">
-                                Buku
-                            </li>
-                        </a>
-                        <a href="{{route('users.index')}}">
-                            <li class="navbar-nav mr-auto text-muted ml-3">
-                                User
-                            </li>
-                        </a>
-                        <a href="{{route('borrowings.index')}}">
-                            <li class="navbar-nav mr-auto text-muted ml-3">
-                                Peminjaman
-                            </li>
-                        </a>
-                    </ul>
+
+                    @if (Route::has('login'))
+                        @auth
+                            <ul class="navbar-nav mr-3">
+                                @role('petugas|anggota')
+                                    <a href="{{route('books.index')}}">
+                                        <li class="navbar-nav mr-auto text-muted">
+                                            Buku
+                                        </li>
+                                    </a>
+                                @endrole
+                                @role('petugas')
+                                    <a href="{{route('users.index')}}">
+                                        <li class="navbar-nav mr-auto text-muted ml-3">
+                                            User
+                                        </li>
+                                    </a>
+                                    <a href="{{route('borrowings.index')}}">
+                                        <li class="navbar-nav mr-auto text-muted ml-3">
+                                            Peminjaman
+                                        </li>
+                                    </a>
+                                @endrole
+                            </ul>
+                        @endauth
+                    @endif
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -86,7 +94,8 @@
             <div class="container">
                 <div id="flash-msg">
                 </div>
-                <flash message="{{ session('flash') }}"></flash>
+                @include('flash::message')
+                @include('layouts._errors')
                 @yield('content')
             </div>
         </main>

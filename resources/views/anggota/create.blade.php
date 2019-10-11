@@ -41,7 +41,21 @@
             </label>
             <input type="text" name="alamat" value="" class="form-control" required>
         </div>
-
+        <div class="form-group">
+            <label for="level">Akses</label>
+            <select name="roles" id="level" class="form-control">
+                <option value="">Pilih akses</option>
+                @foreach ($roles as $role)
+                    <option value="{{$role->id}}">{{$role->name}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="alamat">
+                Password
+            </label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
         <div class="mt-3 mb-3">
             <button type="submit" class="btn btn-info">
                 Tambah Anggota

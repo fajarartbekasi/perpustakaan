@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Http\Requests\UserRequest;
+use App\Role;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -27,7 +28,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('anggota.create');
+
+        $roles = Role::all();
+
+        return view('anggota.create', compact('roles'));
     }
 
     /**
@@ -36,9 +40,27 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
-        User::create($request->formAnggota());
+        $this->validate($request, [
+            'nis'           => 'required',
+            'name'          => 'required',
+            'email'         => 'required',
+            'no_handphone'  => 'required',
+            'alamat'        => 'required',
+            'password'      => 'required',
+            'roles'         => 'required|min:1',
+        ]);
+
+        $request->merge(['password' => bcrypt($request->get('password'))]);
+
+        if ($user = User::create($request->except('roles'))) {
+            $user->syncRoles($request->get('roles'));
+            flash()->success('Pengguna berhasil ditambahkan');
+        } else {
+            flash()->error('Tidak dapat menambahkan pengguna');
+        }
+
 
         return redirect()->route('users.index');
     }
@@ -84,6 +106,8 @@ class UserController extends Controller
 
        $user->update($request->all());
 
+       flash()->success('data pengguna berhasil di perbaharui');
+
        return redirect()->route('users.index');
     }
 
@@ -96,6 +120,8 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
+
+        flash()->success('data pengguna berhasil di hapus');
 
         return redirect()->route('users.index');
     }

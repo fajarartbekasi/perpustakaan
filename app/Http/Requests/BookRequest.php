@@ -25,9 +25,9 @@ class BookRequest extends FormRequest
     public function rules()
     {
         return [
-            
-            'name' => 'required|unique:books|max:30',
-            'description' => 'required|max:100',
+
+            'name' => 'required|unique:books',
+            'description' => 'required',
             'penerbit' => 'required|max:30',
             'tanggal_terbit' => 'required|date',
             'stock' => 'required|integer'

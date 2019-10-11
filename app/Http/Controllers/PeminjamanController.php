@@ -59,10 +59,11 @@ class PeminjamanController extends Controller
         $peminjaman->user_id = auth()->user()->id;
         $peminjaman->tgl_pinjam = $request->tgl_pinjam;
         $peminjaman->tgl_kembali = $request->tgl_kembali;
+        $peminjaman->jumlah_pinjam = $request->jumlah_pinjam;
         $peminjaman->save();
 
         $book = Book::find($request->books);
-        $book->stock = $book->stock - 1;
+        $book->stock = $book->stock - $request->jumlah_pinjam;
         $book->save();
         return redirect()->route('borrowings.index');
     }
@@ -84,9 +85,11 @@ class PeminjamanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Book $book, $id)
     {
-        //
+        $book = Book::find($id);
+
+        return view('peminjaman.create', compact('book'));
     }
 
     /**

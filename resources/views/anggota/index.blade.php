@@ -31,7 +31,7 @@
                 <tr>
                     <td>{{$user->nis}}</td>
                     <td>{{$user->name}}</td>
-                    <td>{{$user->Email}}</td>
+                    <td>{{$user->email}}</td>
                     <td>{{$user->no_handphone}}</td>
                     <td>{{$user->alamat}}</td>
                     <td>

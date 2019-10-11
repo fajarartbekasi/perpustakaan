@@ -41,8 +41,9 @@ class BookController extends Controller
     {
         Book::create($request->formBook());
 
-        return redirect()->route('books')
-                         ->with('flash', 'Data buku berhasil ditambahkan.');
+        flash()->success('Buku berhasi ditambahkan');
+
+        return redirect()->route('books.index');
     }
 
     /**
@@ -77,14 +78,16 @@ class BookController extends Controller
     public function update(Request $request, Book $book)
     {
         $this->validate($request, [
-            'name' => 'required|max:30',
-            'description' => 'required|max:100',
-            'penerbit' => 'required|max:30',
+            'name' => 'required',
+            'description' => 'required',
+            'penerbit' => 'required',
             'tanggal_terbit' => 'required|date',
             'stock' => 'required|integer'
         ]);
 
         $book->update($request->all());
+
+        flash()->success('data buku berhasil diupdate.');
 
         return redirect()->route('books.index');
     }
@@ -98,6 +101,8 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
         $book->delete();
+
+        flash()->success('selamat buku berhasil dihapus.');
 
         return redirect()->route('books.index');
     }
