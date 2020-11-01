@@ -10903,8 +10903,15 @@ a.text-dark:focus {
   }
 }
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+.jumbotron {
+  padding: 14rem;
+  margin-bottom: 2rem;
+  background-image: url(/images/banner.png?76d0542947de3344f8d77995d09a3652);
+  background-size: 99%;
+}
+
+.footer {
+  background-color: #6cb2eb;
+  color: white;
 }
 

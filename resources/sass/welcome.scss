@@ -1,0 +1,21 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.jumbotron {
+    padding:14rem;
+    margin-bottom: 2rem;
+    background-image: url('banner/banner.png');
+    background-size: 99%;
+}
+
+.footer {
+  background-color: #6cb2eb;
+  color: white;
+}
