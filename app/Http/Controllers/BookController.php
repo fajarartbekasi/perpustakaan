@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Book;
+use Intervention\Image\Facades\Image;
 use App\Http\Requests\BookRequest;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +34,9 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('books.create');
+        $categorys = Category::all();
+
+        return view('books.create',compact('categorys'));
     }
 
     /**
@@ -37,9 +45,11 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BookRequest $request)
+    public function store()
     {
-        Book::create($request->formBook());
+       $book = Book::create($this->validateRequest());
+
+       $this->storeImage($book);
 
         flash()->success('Buku berhasi ditambahkan');
 
@@ -105,5 +115,34 @@ class BookController extends Controller
         flash()->success('selamat buku berhasil dihapus.');
 
         return redirect()->route('books.index');
+    }
+
+    private function validateRequest(){
+        return tap(request()->validate([
+            'category_id'       => 'required',
+            'name'              => 'required',
+            'description'       => 'required',
+            'penerbit'          => 'required',
+            'tanggal_terbit'    =>  'required',
+            'stock'             =>  'required',
+            'images'    => 'required|image|max:5000',
+        ]), function(){
+            if(request()->hasFile('images')){
+                request()->validate([
+                    'images'    => 'required|image|max:5000',
+                ]);
+            }
+        });
+    }
+
+    private function storeImage($book){
+        if(request()->has('images')){
+            $book->update([
+                'images'  => request()->images->store('uploads','public'),
+            ]);
+
+            $image = Image::make(public_path('storage/'. $book->images))->fit(300,300, null, 'top-left');
+            $image->save();
+        }
     }
 }

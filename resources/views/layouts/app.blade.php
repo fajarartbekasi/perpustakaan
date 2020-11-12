@@ -48,6 +48,11 @@
                                             User
                                         </li>
                                     </a>
+                                    <a href="{{route('category.create')}}">
+                                        <li class="navbar-nav mr-auto text-muted ml-3">
+                                            Category
+                                        </li>
+                                    </a>
                                     <a href="{{route('borrowings.index')}}">
                                         <li class="navbar-nav mr-auto text-muted ml-3">
                                             Peminjaman

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBooksTable extends Migration
+class CreateCategorysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreateBooksTable extends Migration
      */
     public function up()
     {
-        Schema::create('books', function (Blueprint $table) {
+        Schema::create('categorys', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('category_id');
             $table->string('name');
-            $table->string('description');
-            $table->string('penerbit');
-            $table->date('tanggal_terbit');
-            $table->string('images');
-            $table->integer('stock');
+            $table->string('no_rak');
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ class CreateBooksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('books');
+        Schema::dropIfExists('categorys');
     }
 }
