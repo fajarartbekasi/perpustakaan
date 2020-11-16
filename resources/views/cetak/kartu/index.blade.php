@@ -33,7 +33,7 @@
                                 <td>{{$anggota->users->first()->no_handphone}}</td>
                                 <td>
                                     <a href="{{route('cetak.detail', $anggota->id)}}" class="btn btn-info btn-sm">Detail</a>
-                                    <a href="http://" class="btn btn-warning btn-sm">Cetak Kartu</a>
+                                    <a href="{{route('cetak.kartu',$anggota->id)}}" class="btn btn-warning btn-sm">Cetak Kartu</a>
                                 </td>
                             </tr>
                         @endforeach
