@@ -28,3 +28,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('category/create', 'CategoryController@create')->name('category.create');
 Route::post('category/store', 'CategoryController@store')->name('category.store');
+
+Route::group(['prefix' => 'cetak'], function(){
+
+    Route::get('/index','CetakController@index')->name('cetak');
+
+    Route::get('/detail/{role}','CetakController@show')->name('cetak.detail');
+    Route::get('/kartu/{role}','CetakController@cetak')->name('cetak.kartu');
+});

@@ -48,6 +48,11 @@
                                             User
                                         </li>
                                     </a>
+                                    <a href="{{route('cetak')}}">
+                                        <li class="navbar-nav mr-auto text-muted ml-3">
+                                            Cetak Kartu Anggota
+                                        </li>
+                                    </a>
                                     <a href="{{route('category.create')}}">
                                         <li class="navbar-nav mr-auto text-muted ml-3">
                                             Category
