@@ -61,23 +61,40 @@
 @endrole
 @role('anggota')
 	<div class="row">
+		<div class="col-md-3">
+			<ul class="list-group shadow-sm">
+				<li class="list-group-item border-0 active">Rak Buku</li>
+				@foreach($raks as $rak)
+					<li class="list-group-item border-0 ">{{$rak->name}}</li>
+				@endforeach
+			</ul>
+		</div>
 		@forelse($books as $book)
-			<div class="col-md-4">
-				<div class="card card-body border-0">
-					<h6 class="font-weight-bold">{{$book->name}}</h6>
-					<p class="text-muted">
-						{{$book->description}}
-					</p>
+			<div class="col-md-9">
+				<div class="card border-0">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-4">
+								<img src="{{ url('storage/'. $book->images) }}" class="card-img-top" alt="...">
+								<h3 class="font-weight-bold pt-3">{{$book->name}}</h3>
+								<p class="text-muted">
+									{{$book->description}}
+								</p>
 
-					<p> Total stock : {{$book->stock}}</p>
+								<p> Total stock : {{$book->stock}}</p>
 
-					<div class="mt-3 mb-3">
-						<a href="{{route('borrowings.edit', $book->id)}}" class="btn btn-outline-info btn-block">
-							Pinjam buku
-						</a>
+								<div class="mt-3 mb-3">
+									<a href="{{route('borrowings.edit', $book->id)}}" class="btn btn-outline-info btn-block">
+										Pinjam buku
+									</a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
+
+			{{$books->links()}}
 			@empty
 			<h1 class="text-center">Maaf List Buku belum tersedia</h1>
 		@endforelse
