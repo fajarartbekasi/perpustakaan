@@ -21,6 +21,8 @@ Route::resource('users', 'UserController');
 
 Route::resource('borrowings', 'PeminjamanController');
 
+Route::get('/list-peminjaman','ListpinjamController@index')->name('list-peminjaman');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

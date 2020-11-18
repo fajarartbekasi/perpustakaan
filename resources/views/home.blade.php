@@ -23,6 +23,10 @@
                             Jumlah Buku yang dipinjam
                         </h3>
                     </div>
+
+                    <div class="pt-3">
+                        <a href="{{route('list-peminjaman')}}" class="btn btn-info">Lihat daftar peminjaman</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -43,6 +47,9 @@
                         <h3 class="text-muted mt-3">
                             Jumlah Buku
                         </h3>
+                    </div>
+                    <div class="pt-3">
+                        <a href="{{route('books.index')}}" class="btn btn-info">Cek daftar buku </a>
                     </div>
                 </div>
             </div>

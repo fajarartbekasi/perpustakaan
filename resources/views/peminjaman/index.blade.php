@@ -10,11 +10,7 @@
 </nav>
 
 <div class="card card-body border-0">
-    <div class="mt-3 mb-3">
-        <a class="btn btn-info" href="{{route('borrowings.create')}}">
-            Buat peminjaman Baru
-        </a>
-    </div>
+
     <table class="table table-striped">
         <thead>
             <tr>
