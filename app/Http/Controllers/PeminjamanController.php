@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use carbon\Carbon;
 use App\Book;
 use App\Borrowing;
 use App\User;
@@ -23,7 +24,9 @@ class PeminjamanController extends Controller
         $borrowings = Borrowing::paginate(5);
 
         return view('peminjaman.index', compact('borrowings'));
-    }
+
+
+    }  
 
     /**
      * Show the form for creating a new resource.
