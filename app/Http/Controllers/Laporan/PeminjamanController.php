@@ -21,4 +21,12 @@ class PeminjamanController extends Controller
 
         return $pdf->stream('rekap_periode_peminjaman.pdf');
     }
+    public function peminjaman()
+    {
+        $borrowings = Borrowing::with('user','book')->get();
+
+        $pdf = PDF::loadView('laporan.peminjaman.peminjaman', compact('borrowings'))->setPaper('a4', 'landscape');
+
+        return $pdf->stream('rekap_laporan_peminjaman.pdf');
+    }
 }

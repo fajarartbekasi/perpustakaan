@@ -24,8 +24,16 @@
                     <input type="date" name="tgl_akhir" id="" class="form-control">
                 </div>
             </div>
-            <div class="col-md-6">
-                <button type="submit" class="btn btn-info">Cari laporan</button>
+            <div class="col-md-12">
+                <div class="d-flex">
+                    <div class="mr-auto">
+                        <a href="{{route('rekap-laporan.peminjaman')}}" class="btn btn-secondary">Rekap Seluruh Laporan</a>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-info">Cari laporan</button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </form>

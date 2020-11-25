@@ -41,4 +41,5 @@ Route::group(['prefix' => 'cetak'], function(){
 Route::group(['prefix' => 'rekap-laporan'], function(){
     route::get('/buku', 'Laporan\LaporanbukuController@rekapbuku')->name('rekap-laporan.buku');
     route::get('/periode', 'Laporan\PeminjamanController@periode')->name('rekap-laporan.periode');
+    route::get('/peminjaman', 'Laporan\PeminjamanController@peminjaman')->name('rekap-laporan.peminjaman');
 });
