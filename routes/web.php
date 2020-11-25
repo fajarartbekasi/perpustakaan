@@ -37,3 +37,8 @@ Route::group(['prefix' => 'cetak'], function(){
     Route::get('/detail/{role}','CetakController@show')->name('cetak.detail');
     Route::get('/kartu/{role}','CetakController@cetak')->name('cetak.kartu');
 });
+
+Route::group(['prefix' => 'rekap-laporan'], function(){
+    route::get('/buku', 'Laporan\LaporanbukuController@rekapbuku')->name('rekap-laporan.buku');
+    route::get('/periode', 'Laporan\PeminjamanController@periode')->name('rekap-laporan.periode');
+});

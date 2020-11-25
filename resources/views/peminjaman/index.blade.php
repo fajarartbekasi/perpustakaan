@@ -10,7 +10,25 @@
 </nav>
 
 <div class="card card-body border-0">
-
+    <form action="{{route('rekap-laporan.periode')}}" class="mb-3" method="GET">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">Dari Tanggal</label>
+                    <input type="date" name="tgl_awal" id="" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">Dari Tanggal</label>
+                    <input type="date" name="tgl_akhir" id="" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-info">Cari laporan</button>
+            </div>
+        </div>
+    </form>
     <table class="table table-striped">
         <thead>
             <tr>
