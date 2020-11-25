@@ -11,6 +11,11 @@
 <div class="card card-body border-0">
     <form action="{{route('borrowings.store')}}" method="post">
         @csrf
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success')}}
+            </div>
+        @endif
         <div class="form-group">
             <label for="name_book">
                 Buku

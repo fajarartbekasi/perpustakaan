@@ -36,13 +36,23 @@
                         @auth
                             <ul class="navbar-nav mr-3">
                                 @role('petugas|anggota')
-                                    <a href="{{route('books.index')}}">
+                                    <a href="{{route('home')}}">
                                         <li class="navbar-nav mr-auto text-muted">
+                                            Home
+                                        </li>
+                                    </a>
+                                    <a href="{{route('books.index')}}">
+                                        <li class="navbar-nav ml-3 text-muted">
                                             Buku
                                         </li>
                                     </a>
                                 @endrole
                                 @role('petugas')
+                                    <a href="{{route('home')}}">
+                                        <li class="navbar-nav mr-auto text-muted">
+                                            Home
+                                        </li>
+                                    </a>
                                     <a href="{{route('users.index')}}">
                                         <li class="navbar-nav mr-auto text-muted ml-3">
                                             User

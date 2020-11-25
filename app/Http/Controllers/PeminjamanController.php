@@ -26,7 +26,7 @@ class PeminjamanController extends Controller
         return view('peminjaman.index', compact('borrowings'));
 
 
-    }  
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -54,7 +54,6 @@ class PeminjamanController extends Controller
             'tgl_kembali' => 'required'
         ]);
 
-        // dd($coba);
         $stock = Book::find($request->books);
         if ($stock->stock <= 0) {
             flash('Maaf Stock Buku Habis', 'danger');
@@ -72,7 +71,7 @@ class PeminjamanController extends Controller
         $book = Book::find($request->books);
         $book->stock = $book->stock - $request->jumlah_pinjam;
         $book->save();
-        return redirect()->route('borrowings.index');
+        return redirect()->back()->with(['success'=>'Yeayyyy kamu berhasil meminjam buku, selamat membaca']);
     }
 
     /**
