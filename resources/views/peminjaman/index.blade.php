@@ -58,23 +58,38 @@
                     <td>{{$borrowing->tgl_kembali}}</td>
                     <td>
                         <?php
-                            $datetime2 = strtotime($borrowing->tgl_kembali) ;
+                            $datetime2 = strtotime($date) ;
                             $datenow = strtotime($borrowing->tgl_pinjam);
                             $durasi = ($datenow - $datetime2) / 86400 ;
                             $durasi2 = ($durasi) + 7;
                         ?>
-                        @if ($durasi < -7 ) Durasi Habis / {{ $durasi2 }} Hari
+                        @if ($durasi < -7 ) Durasi Habis / {{ number_format($durasi2) }} Hari
                             @else
-                            <?php $durasi1 = abs($durasi) ?> {{ $durasi1 }} Hari
+                            <?php $durasi1 = abs($durasi) ?> {{ number_format($durasi1) }} Hari
                         @endif
                     </td>
                     <td>
-                        @if ($durasi < -12) <?php $denda = 5000 ; ?> {{ $denda }}
-                            @elseif ($durasi < -7)
-                            <?php $denda = abs($durasi2) * 1000 ; ?> {{ $denda }}
-                            @else
-                            0
-                        @endif
+
+
+                                    @if ($durasi = -5)
+                                    <form action="{{route('notifikasi.rimainder', $borrowing->id)}}" method="POST" type="hidden">
+                                        @csrf
+                                        <button type="submit" class="btn btn-warning btn-sm">Kirim Notifikasi Peminjaan</button>
+                                    </form>
+
+                                @elseif ($durasi < -7)
+                                <?php $denda = abs($durasi2) * 1000 ; ?>
+                                    <form action="{{route('notifikasi.denda', $borrowing->id)}}" method="POST" type="hidden">
+                                        @csrf
+                                        <input type="hidden" name="denda" value={{$denda}}>
+                                        <button type="submit"class="btn btn-danger btn-sm">kirim denda</button>
+                                    </form>
+
+                                @else
+                                0
+                            @endif
+
+                        </form>
                     </td>
                     <td>
                         <form action="{{route('borrowings.destroy', $borrowing->id)}}" method="post" type="hidden">

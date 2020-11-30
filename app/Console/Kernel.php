@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\NotifySms::class
+        //
     ];
 
     /**
@@ -24,8 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('notify:sms')
-                 ->everyFiveMinutes();
+        // $schedule->command('inspire')->hourly();
     }
 
     /**

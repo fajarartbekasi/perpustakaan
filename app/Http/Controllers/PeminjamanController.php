@@ -7,6 +7,7 @@ use App\Book;
 use App\Borrowing;
 use App\User;
 use Illuminate\Http\Request;
+use Nexmo\Laravel\Facade\Nexmo;
 
 class PeminjamanController extends Controller
 {
@@ -21,11 +22,10 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
+        $date = now();
         $borrowings = Borrowing::paginate(5);
 
-        return view('peminjaman.index', compact('borrowings'));
-
-
+        return view('peminjaman.index', compact('borrowings', 'date'));
     }
 
     /**
@@ -128,4 +128,5 @@ class PeminjamanController extends Controller
 
         return redirect()->route('borrowings.index');
     }
+
 }

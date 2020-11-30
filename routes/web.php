@@ -43,3 +43,10 @@ Route::group(['prefix' => 'rekap-laporan'], function(){
     route::get('/periode', 'Laporan\PeminjamanController@periode')->name('rekap-laporan.periode');
     route::get('/peminjaman', 'Laporan\PeminjamanController@peminjaman')->name('rekap-laporan.peminjaman');
 });
+
+Route::group(['prefix',  'notifikasi'], function(){
+    route::get('informasi/{borrowing}','NotifikasismsController@create')->name('notifikasi.informasi');
+
+    route::post('denda/{borrowing}','NotifikasismsController@denda')->name('notifikasi.denda');
+    route::post('rimainder/{borrowing}','NotifikasismsController@rimainder')->name('notifikasi.rimainder');
+});
