@@ -21,23 +21,23 @@
                         <tbody>
                             <tr>
                                 <td><h5 class="text-muted">Nama</h5></td>
-                                <td><h5 class="text-muted">: {{$anggota->users->first()->name}}</h5></td>
+                                <td><h5 class="text-muted">: {{$anggota->name}}</h5></td>
                             </tr>
                             <tr>
                                 <td><h5 class="text-muted">Nis</h5></td>
-                                <td><h5 class="text-muted">: {{$anggota->users->first()->nis}}</h5></td>
+                                <td><h5 class="text-muted">: {{$anggota->nis}}</h5></td>
                             </tr>
                             <tr>
                                 <td><h5 class="text-muted">Alamat</h5></td>
-                                <td><h5 class="text-muted">: {{$anggota->users->first()->alamat}}</h5></td>
+                                <td><h5 class="text-muted">: {{$anggota->alamat}}</h5></td>
                             </tr>
                             <tr>
                                 <td><h5 class="text-muted">E-mail</h5></td>
-                                <td><h5 class="text-muted">: {{$anggota->users->first()->Email}}</h5></td>
+                                <td><h5 class="text-muted">: {{$anggota->email}}</h5></td>
                             </tr>
                             <tr>
                                 <td><h5 class="text-muted">No. Handphone</h5></td>
-                                <td><h5 class="text-muted">: {{$anggota->users->first()->no_handphone}}</h5></td>
+                                <td><h5 class="text-muted">: {{$anggota->no_handphone}}</h5></td>
                             </tr>
                         </tbody>
                     </table>

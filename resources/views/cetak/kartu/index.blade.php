@@ -27,10 +27,10 @@
                     <tbody>
                         @foreach($anggotas as $anggota)
                             <tr>
-                                <td>{{$anggota->users->first()->nis}}</td>
-                                <td>{{$anggota->users->first()->name}}</td>
-                                <td>{{$anggota->users->first()->alamat}}</td>
-                                <td>{{$anggota->users->first()->no_handphone}}</td>
+                                <td>{{$anggota->nis}}</td>
+                                <td>{{$anggota->name}}</td>
+                                <td>{{$anggota->alamat}}</td>
+                                <td>{{$anggota->no_handphone}}</td>
                                 <td>
                                     <a href="{{route('cetak.detail', $anggota->id)}}" class="btn btn-info btn-sm">Detail</a>
                                     <a href="{{route('cetak.kartu',$anggota->id)}}" class="btn btn-warning btn-sm">Cetak Kartu</a>

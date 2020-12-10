@@ -71,23 +71,23 @@
                     <td>
 
 
-                                    @if ($durasi = -5)
-                                    <form action="{{route('notifikasi.rimainder', $borrowing->id)}}" method="POST" type="hidden">
-                                        @csrf
-                                        <button type="submit" class="btn btn-warning btn-sm">Kirim Notifikasi Peminjaan</button>
-                                    </form>
+                            @if ($durasi = -5)
+                                <form action="{{route('notifikasi.rimainder', $borrowing->id)}}" method="POST" type="hidden">
+                                    @csrf
+                                    <button type="submit" class="btn btn-warning btn-sm">Kirim Notifikasi Peminjaan</button>
+                                </form>
 
-                                @elseif ($durasi < -7)
-                                <?php $denda = abs($durasi2) * 1000 ; ?>
-                                    <form action="{{route('notifikasi.denda', $borrowing->id)}}" method="POST" type="hidden">
-                                        @csrf
-                                        <input type="hidden" name="denda" value={{$denda}}>
-                                        <button type="submit"class="btn btn-danger btn-sm">kirim denda</button>
-                                    </form>
+                                    @elseif ($durasi < -7)
+                                    <?php $denda = abs($durasi2) * 1000 ; ?>
+                                        <form action="{{route('notifikasi.denda', $borrowing->id)}}" method="POST" type="hidden">
+                                            @csrf
+                                            <input type="hidden" name="denda" value={{$denda}}>
+                                            <button type="submit"class="btn btn-danger btn-sm">kirim denda</button>
+                                        </form>
 
-                                @else
-                                0
-                            @endif
+                                    @else
+                                    0
+                                @endif
 
                         </form>
                     </td>
