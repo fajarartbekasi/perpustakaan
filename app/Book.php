@@ -18,5 +18,9 @@ class Book extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function pengembalians()
+    {
+        return $this->belongsTo(Pengembalian::class);
+    }
 
 }

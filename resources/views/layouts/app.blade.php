@@ -48,11 +48,6 @@
                                     </a>
                                 @endrole
                                 @role('petugas')
-                                    <a href="{{route('home')}}">
-                                        <li class="navbar-nav mr-auto text-muted">
-                                            Home
-                                        </li>
-                                    </a>
                                     <a href="{{route('users.index')}}">
                                         <li class="navbar-nav mr-auto text-muted ml-3">
                                             User
@@ -71,6 +66,16 @@
                                     <a href="{{route('borrowings.index')}}">
                                         <li class="navbar-nav mr-auto text-muted ml-3">
                                             Peminjaman
+                                        </li>
+                                    </a>
+                                    <a href="{{route('pengembalian.index')}}">
+                                        <li class="navbar-nav mr-auto text-muted ml-3">
+                                           Buat Pengembalian
+                                        </li>
+                                    </a>
+                                    <a href="{{route('rekap-laporan.pengembalian')}}">
+                                        <li class="navbar-nav mr-auto text-muted ml-3">
+                                            Pengembalian
                                         </li>
                                     </a>
                                 @endrole

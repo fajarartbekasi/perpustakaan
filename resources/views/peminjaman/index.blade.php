@@ -46,7 +46,6 @@
                 <th>Tanggal Kembali</th>
                 <th>Durasi Peminjaman</th>
                 <th>Denda</th>
-                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -71,7 +70,7 @@
                     <td>
 
 
-                            @if ($durasi = -5)
+                            @if ($durasi == -5)
                                 <form action="{{route('notifikasi.rimainder', $borrowing->id)}}" method="POST" type="hidden">
                                     @csrf
                                     <button type="submit" class="btn btn-warning btn-sm">Kirim Notifikasi Peminjaan</button>
@@ -82,6 +81,7 @@
                                         <form action="{{route('notifikasi.denda', $borrowing->id)}}" method="POST" type="hidden">
                                             @csrf
                                             <input type="hidden" name="denda" value={{$denda}}>
+                                            <input type="hidden" name="durasi" value={{$durasi}}>
                                             <button type="submit"class="btn btn-danger btn-sm">kirim denda</button>
                                         </form>
 
@@ -89,16 +89,6 @@
                                     0
                                 @endif
 
-                        </form>
-                    </td>
-                    <td>
-                        <form action="{{route('borrowings.destroy', $borrowing->id)}}" method="post" type="hidden">
-                            @csrf
-                            @method('DELETE')
-
-                            <button type="submit" class="btn btn-danger btn-sm">
-                                Kembalikan Buku
-                            </button>
                         </form>
                     </td>
                 </tr>

@@ -42,6 +42,10 @@ Route::group(['prefix' => 'rekap-laporan'], function(){
     route::get('/buku', 'Laporan\LaporanbukuController@rekapbuku')->name('rekap-laporan.buku');
     route::get('/periode', 'Laporan\PeminjamanController@periode')->name('rekap-laporan.periode');
     route::get('/peminjaman', 'Laporan\PeminjamanController@peminjaman')->name('rekap-laporan.peminjaman');
+    route::get('/pengembalian', 'PengembalianController@show')->name('rekap-laporan.pengembalian');
+
+    route::get('/periode/pengembalian', 'PengembalianController@periode')->name('rekap-laporan.periode.pengembalian');
+    route::get('/semua/pengembalian', 'PengembalianController@all')->name('rekap-laporan.semua.pengembalian');
 });
 
 Route::group(['prefix',  'notifikasi'], function(){
@@ -49,4 +53,10 @@ Route::group(['prefix',  'notifikasi'], function(){
 
     route::post('denda/{borrowing}','NotifikasismsController@denda')->name('notifikasi.denda');
     route::post('rimainder/{borrowing}','NotifikasismsController@rimainder')->name('notifikasi.rimainder');
+});
+
+Route::group(['prefix' => 'pengembalian'], function(){
+    route::get('index', 'PengembalianController@index')->name('pengembalian.index');
+    route::get('create/{borrowing}', 'PengembalianController@create')->name('pengembalian.create');
+    route::post('store/{borrowing}', 'PengembalianController@store')->name('pengembalian.store');
 });

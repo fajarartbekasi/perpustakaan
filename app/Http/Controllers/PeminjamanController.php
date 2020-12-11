@@ -116,17 +116,9 @@ class PeminjamanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Borrowing $borrowing)
+    public function destroy()
     {
-        $borrowing->delete();
 
-        $book = Book::find($borrowing->book_id);
-
-        $book->stock = $book->stock + 1;
-
-        $book->save();
-
-        return redirect()->route('borrowings.index');
     }
 
 }
